@@ -1,0 +1,42 @@
+﻿@model ATV_3bi.Models.Jogo
+@{
+    ViewBag.Title = "ListarJogo";
+}
+
+<h2>Jogo Cadastrado</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <div class="editor-label">@Html.DisplayNameFor(m => m.JogoCod)</div>
+        <div class="editor-field">@Html.DisplayFor(m => m.JogoCod)</div>
+
+        <div class="editor-label">@Html.DisplayNameFor(m => m.JogoNome)</div>
+        <div class="editor-field">@Html.DisplayFor(m => m.JogoNome)</div>
+
+        <div class="editor-label">@Html.DisplayNameFor(m => m.JogoVersao)</div>
+        <div class="editor-field">@Html.DisplayFor(m => m.JogoVersao)</div>
+
+        <div class="editor-label">@Html.DisplayNameFor(m => m.JogoDev)</div>
+        <div class="editor-field">@Html.DisplayFor(m => m.JogoDev)</div>
+
+        <div class="editor-label">@Html.DisplayNameFor(m => m.JogoGen)</div>
+        <div class="editor-field">@Html.DisplayFor(m => m.JogoGen)</div>
+
+        <div class="editor-label">@Html.DisplayNameFor(m => m.JogoFxEt)</div>
+        <div class="editor-field">@Html.DisplayFor(m => m.JogoFxEt)</div>
+
+        <div class="editor-label">@Html.DisplayNameFor(m => m.JogoPlat)</div>
+        <div class="editor-field">@Html.DisplayFor(m => m.JogoPlat)</div>
+
+        <div class="editor-label">@Html.DisplayNameFor(m => m.JogoAnoLanc)</div>
+        <div class="editor-field">@Html.DisplayFor(m => m.JogoAnoLanc)</div>
+
+        <div class="editor-label">@Html.DisplayNameFor(m => m.JogoSin)</div>
+        <div class="editor-field">@Html.DisplayFor(m => m.JogoSin)</div>
+
+        <br />
+        @Html.ActionLink("Voltar", "Index", "Home")
+    </fieldset>
+}
+

@@ -1,0 +1,33 @@
+﻿@model ATV_3bi.Models.Cliente
+@{
+    ViewBag.Title = "ListarCli";
+}
+
+<h2>Cliente Cadastrado</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <div class="editor-label">@Html.DisplayNameFor(m => m.CliNome)</div>
+        <div class="editor-field">@Html.DisplayFor(m => m.CliNome)</div>
+
+        <div class="editor-label">@Html.DisplayNameFor(m => m.CliCpf)</div>
+        <div class="editor-field">@Html.DisplayFor(m => m.CliCpf)</div>
+
+        <div class="editor-label">@Html.DisplayNameFor(m => m.CliDtNasc)</div>
+        <div class="editor-field">@Html.DisplayFor(m => m.CliDtNasc)</div>
+
+        <div class="editor-label">@Html.DisplayNameFor(m => m.CliEmail)</div>
+        <div class="editor-field">@Html.DisplayFor(m => m.CliEmail)</div>
+
+        <div class="editor-label">@Html.DisplayNameFor(m => m.CliCel)</div>
+        <div class="editor-field">@Html.DisplayFor(m => m.CliCel)</div>
+
+        <div class="editor-label">@Html.DisplayNameFor(m => m.CliEnd)</div>
+        <div class="editor-field">@Html.DisplayFor(m => m.CliEnd)</div>
+
+        <br />
+        @Html.ActionLink("Voltar", "Index", "Home")
+    </fieldset>
+}
+

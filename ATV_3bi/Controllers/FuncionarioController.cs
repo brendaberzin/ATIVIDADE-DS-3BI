@@ -15,17 +15,14 @@ namespace ATV_3bi.Controllers
             var funcionario = new Funcionario();
             return View(funcionario);
         }
+
+        Action ac = new Action();
+
         [HttpPost]
-        public ActionResult IndexFunc(Funcionario funcionario)
+        
+        public ActionResult IndexFunc (Funcionario funcionario)
         {
-            if (ModelState.IsValid)
-            {
-                return View("Listar", funcionario);
-            }
-            return View(funcionario);
-        }
-        public ActionResult Listar(Funcionario funcionario)
-        {
+            ac.CadastrarFuncionario(funcionario);
             return View(funcionario);
         }
     }

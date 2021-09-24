@@ -15,8 +15,17 @@ namespace ATV_3bi.Controllers
             var jogo = new Jogo();
             return View(jogo);
         }
+
+        Action ac = new Action();
+
         [HttpPost]
+
         public ActionResult IndexJogo(Jogo jogo)
+        {
+            ac.CadastrarJogo(jogo);
+            return View(jogo);
+        }
+        /*public ActionResult IndexJogo(Jogo jogo)
         {
             if (ModelState.IsValid)
             {
@@ -27,6 +36,6 @@ namespace ATV_3bi.Controllers
         public ActionResult ListarJogo(Jogo jogo)
         {
             return View(jogo);
-        }
+        }*/
     }
 }

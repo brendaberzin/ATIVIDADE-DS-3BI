@@ -12,6 +12,8 @@ namespace ATV_3bi.Repositório
         Connection con = new Connection();
         MySqlCommand cmd = new MySqlCommand();
 
+
+        //Funcionario
         public void CadastrarFuncionario(Funcionario funcionario)
         {
             string data_sistema = Convert.ToDateTime(funcionario.FuncDtNasc).ToString("yyyy-MM-dd");
@@ -29,6 +31,38 @@ namespace ATV_3bi.Repositório
             con.DesconectarBD();
         }
 
+        public List<Funcionario> ListarFuncionario()
+        {
+            MySqlCommand cmd = new MySqlCommand("Select * from tbFuncionario", con.ConectarBD());
+            var DadosFuncionarios = cmd.ExecuteReader();
+            return ListarTodosFuncionarios(DadosFuncionarios);
+        }
+
+        public List<Funcionario> ListarTodosFuncionarios(MySqlDataReader dt)
+        {
+            var TodosFuncionarios = new List<Funcionario>();
+            while (dt.Read())
+            {
+                var FuncionarioTemp = new Funcionario()
+                {
+                    FuncCod = ushort.Parse(dt["FuncCod"].ToString()),
+                    FuncNome = dt["FuncNome"].ToString(),
+                    FuncCpf = dt["FuncCpf"].ToString(),
+                    FuncRg = dt["FuncRg"].ToString(),
+                    FuncDtNasc = DateTime.Parse(dt["FuncDtNasc"].ToString()),
+                    FuncEnd = dt["FuncEnd"].ToString(),
+                    FuncCel = dt["FuncCel"].ToString(),
+                    FuncEmail = dt["FuncEmail"].ToString(),
+                    FuncCargo = dt["FuncCargo"].ToString()
+                };
+                TodosFuncionarios.Add(FuncionarioTemp);
+            }
+            dt.Close();
+            return TodosFuncionarios;
+        }
+        //Funcionario
+
+        //Cliente
         public void CadastrarCliente(Cliente cliente)
         {
             string data_sistema = Convert.ToDateTime(cliente.CliDtNasc).ToString("yyyy-MM-dd");
@@ -43,6 +77,35 @@ namespace ATV_3bi.Repositório
             con.DesconectarBD();
         }
 
+        public List<Cliente> ListarCliente()
+        {
+            MySqlCommand cmd = new MySqlCommand("Select * from tbCliente", con.ConectarBD());
+            var DadosClientes = cmd.ExecuteReader();
+            return ListarTodosClientes(DadosClientes);
+        }
+
+        public List<Cliente> ListarTodosClientes(MySqlDataReader dt)
+        {
+            var TodosClientes = new List<Cliente>();
+            while (dt.Read())
+            {
+                var ClienteTemp = new Cliente()
+                {
+                    CliNome = dt["CliNome"].ToString(),
+                    CliCpf = dt["CliCpf"].ToString(),
+                    CliDtNasc = DateTime.Parse(dt["CliDtNasc"].ToString()),
+                    CliEmail = dt["CliEmail"].ToString(),
+                    CliCel = dt["CliCel"].ToString(),
+                    CliEnd = dt["CliEnd"].ToString(),
+                };
+                TodosClientes.Add(ClienteTemp);
+            }
+            dt.Close();
+            return TodosClientes;
+        }
+        //Cliente
+
+        //Jogo
         public void CadastrarJogo(Jogo jogo)
         {
             MySqlCommand cmd = new MySqlCommand("insert into tbJogo values(@JogoCod,@JogoNome,@JogoVersao,@JogoDev,@JogoGen,@JogoFxEt,@JogoPlat,@JogoAnoLanc,@JogoSin)", con.ConectarBD());
@@ -58,5 +121,35 @@ namespace ATV_3bi.Repositório
             cmd.ExecuteNonQuery();
             con.DesconectarBD();
         }
+
+        public List<Jogo> ListarJogo()
+        {
+            MySqlCommand cmd = new MySqlCommand("Select * from tbJogo", con.ConectarBD());
+            var DadosJogos = cmd.ExecuteReader();
+            return ListarTodosJogos(DadosJogos);
+        }
+
+        public List<Jogo> ListarTodosJogos(MySqlDataReader dt)
+        {
+            var TodosJogos = new List<Jogo>();
+            while (dt.Read())
+            {
+                var JogoTemp = new Jogo()
+                {
+                    JogoCod = ushort.Parse(dt["JogoCod"].ToString()),
+                    JogoNome = dt["JogoNome"].ToString(),
+                    JogoVersao = dt["JogoVersao"].ToString(),
+                    JogoDev = dt["JogoDev"].ToString(),
+                    JogoGen = dt["JogoGen"].ToString(),
+                    JogoFxEt = dt["JogoFxEt"].ToString(),
+                    JogoPlat = dt["JogoPlat"].ToString(),
+                    JogoAnoLanc = dt["JogoAnoLanc"].ToString(),
+                };
+                TodosJogos.Add(JogoTemp);
+            }
+            dt.Close();
+            return TodosJogos;
+        }
+        //Jogo
     }
 }
